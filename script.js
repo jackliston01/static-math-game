@@ -18,7 +18,6 @@ else
 if (localStorage.getItem("cumulative") === null) {
         localStorage.setItem("gamesplayed", "0")}
 
-document.getElementById("score").innerText = "Score: 0";
 
 
 
@@ -31,12 +30,13 @@ function getRandomNumber(min, max) {
 
 function start() {
     generateQuestion()
+    document.getElementById("score").innerText = "Score: 0";
+
     timeLeft = 10
     score = 0
     document.getElementById("timer").style.display = 'block';
 
     document.getElementById("timer").innerText = timeLeft
-    document.getElementById("score").innerText = ``
 
     clearInterval(timerInterval);
 
