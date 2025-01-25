@@ -13,6 +13,11 @@ else
     {document.getElementById("highscore").innerText="Highscore: 0"
 
     }
+    if (localStorage.getItem("gamesplayed") === null) {
+        localStorage.setItem("cumulative", "0")}
+if (localStorage.getItem("cumulative") === null) {
+        localStorage.setItem("gamesplayed", "0")}
+
 document.getElementById("score").innerText = "Score: 0";
 
 
@@ -45,6 +50,10 @@ function start() {
                     document.getElementById("question").innerText = "";
                     document.getElementById("timer").innerText = "";
                     document.getElementById("score").innerText = `You scored ${score}`
+                    localStorage.setItem("gamesplayed", Number(localStorage.getItem("gamesplayed") || 0) + 1);
+                    localStorage.setItem("cumulative", Number(localStorage.getItem("cumulative") || 0) + Number(score));
+
+
                     document.getElementById("timer").style.display = 'none';
 
                     if (typeof localStorage.getItem("highscore") === 'null') {
@@ -94,6 +103,8 @@ function checkAnswer() {
 function cleardata() {
     localStorage.clear()
     document.getElementById("highscore").innerText="Highscore: 0"
+    localStorage.setItem("cumulative", "0")
+    localStorage.setItem("gamesplayed", "0")
 
 }
 const settingsBtn = document.getElementById('settings');
@@ -119,6 +130,9 @@ function openstats(){
     
     const statsMenu = document.getElementById('statsmenu')
     statsMenu.style.display = (statsMenu.style.display === 'block') ? 'none' : 'block';
+    document.getElementById("cumulative").innerText=`Cumulative score: ${localStorage.getItem("cumulative")}`
+    document.getElementById("gamesplayed").innerText=`Games played: ${localStorage.getItem("gamesplayed")}`
+
 }
 
 document.addEventListener('click', function(event) {

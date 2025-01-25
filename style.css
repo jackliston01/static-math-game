@@ -155,6 +155,11 @@ button:active {
     min-width: 300px;
 }
 
+#cumulative, #gamesplayed{
+    color:black;
+
+
+}
 
 #statsmenu label {
     color: #333;
